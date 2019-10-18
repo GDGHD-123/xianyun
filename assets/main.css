@@ -1,7 +1,7 @@
 /* 页面切换时候过渡样式 */
 .page-enter-active,
 .page-leave-active {
-    transition: opacity .5s;
+    transition: opacity .2s;
 }
 
 /* 打开时候过渡样式 */
