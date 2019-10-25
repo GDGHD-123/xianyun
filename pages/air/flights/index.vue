@@ -28,9 +28,8 @@
       </div>
 
       <!-- 侧边栏 -->
-      <div class="aside">
-        <!-- 侧边栏组件 -->
-      </div>
+      <FlightsAside />
+      <!-- 侧边栏组件 -->
     </el-row>
   </section>
 </template>
@@ -39,6 +38,7 @@
 import FlightsFilters from "@/components/air/flightsFilters";
 import FlightsListHead from "@/components/air/flightsListHead";
 import FlightsItem from "@/components/air/flightsItem";
+import FlightsAside from "@/components/air/flightsAside";
 export default {
   data() {
     return {
@@ -65,7 +65,8 @@ export default {
   components: {
     FlightsListHead,
     FlightsItem,
-    FlightsFilters
+    FlightsFilters,
+    FlightsAside
   },
   computed: {
     // 从flights总列表数据中切割出来数组列表
@@ -78,19 +79,14 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.dispatch)
     // 请求机票列表数据
-    this.$axios({
-      url: "/airs",
-      // params是axios的get的参数
-      params: this.$route.query
-    }).then(res => {
-      // 保存到机票的总数据
-      this.flightsData = res.data;
-      this.cacheFlightsData = { ...res.data };
-      // 请求完毕
-      this.loading = false;
-    });
+    this.getList();
+  },
+  watch: {
+    $route() {
+      // 请求机票列表数据
+      this.getList();
+    }
   },
   methods: {
     // 分页条数切换时候触发, val是当前的条数
@@ -131,7 +127,7 @@ export default {
           }
         }
         this.flightsData.flights = arr;
-        this.flightsData.total=arr.length
+        this.flightsData.total = arr.length;
       });
     },
     //优化过多重复代码封装
@@ -150,6 +146,20 @@ export default {
         return start >= +timeArr[0] && start < +timeArr[1];
       });
       return arr;
+    },
+    getList() {
+      // 请求机票列表数据
+      this.$axios({
+        url: "/airs",
+        // params是axios的get的参数
+        params: this.$route.query
+      }).then(res => {
+        // 保存到机票的总数据
+        this.flightsData = res.data;
+        this.cacheFlightsData = { ...res.data };
+        // 请求完毕
+        this.loading = false;
+      });
     }
   }
 };

@@ -32,7 +32,7 @@ export default {
   */
   plugins: [
     '@/plugins/element-ui',
-    { src: '@/plugins/localStorage.js', ssr: false }
+    { src: '@/plugins/localStorage.js', ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules
@@ -51,7 +51,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: "http://127.0.0.1:1337" // 新增axios默认请求路径 	
+    baseURL: "http://localhost:1337" // 新增axios默认请求路径 	
   },
   /*
   ** Build configuration

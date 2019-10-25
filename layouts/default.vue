@@ -1,5 +1,13 @@
 <template>
   <div>
+    <script
+      type="text/javascript"
+      src="https://webapi.amap.com/maps?v=1.4.15&key=5201586f697d302f2849a3297284913a"
+    ></script>
+    <script
+      src="https://webapi.amap.com/maps?v=1.4.15&key=5201586f697d302f2849a3297284913a&plugin=AMap.PlaceSearch"
+    ></script>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1467162_wilr7pj52j.css" />
     <Header />
     <nuxt />
     <Footer />
@@ -12,7 +20,8 @@ export default {
   components: {
     Header,
     Footer
-  }
+  },
+  mounted() {}
 };
 </script>
 <style lang="less">
@@ -40,8 +49,6 @@ ol {
 a {
   text-decoration: none;
   color: inherit;
-}
-a:hover {
 }
 em,
 i {

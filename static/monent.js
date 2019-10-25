@@ -1,11 +1,5 @@
-import Vue from 'vue'
-import Element from 'element-ui'
-import locale from 'element-ui/lib/locale/lang/zh-CN'
-import moment from 'moment'
-Vue.prototype.$moment = moment;//赋值使用
-moment.locale('zh-cn');//需要汉化
-Vue.use(Element, { locale })
-Vue.prototype.format = function (time, format) {
+
+function format(time, format) {
     var t = new Date(time);
     var tf = function (i) {
         return (i < 10 ? "0" : "") + i;
@@ -33,4 +27,3 @@ Vue.prototype.format = function (time, format) {
         }
     });
 }
-

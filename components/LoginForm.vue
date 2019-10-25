@@ -64,7 +64,7 @@ export default {
         })
           .then(res => {
             this.$store.commit("user/setUserInfo", res.data);
-            this.$message.success("登陆成功正在跳转页面...");
+            this.$message.success("登陆成功");
             this.$router.push("/air")
           })
           .catch(res => {

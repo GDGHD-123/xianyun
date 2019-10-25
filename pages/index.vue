@@ -72,19 +72,22 @@ export default {
     };
   },
   mounted() {
-    // if (this.$store.state.banners.banners.length === 0) {
-      this.$axios({
-        url: "/scenics/banners"
-      }).then(res => {
-        if (res.status == 200) {
-          const { data } = res.data;
-          // this.$store.commit("banners/setBanners", data);
-          this.banners = data
-        } else {
-          this.$message.error("获取图片失败");
-        }
-      });
-    // }
+    // setTimeout(() => {
+
+      // if (this.$store.state.banners.banners.length === 0) {
+        this.$axios({
+          url: "/scenics/banners"
+        }).then(res => {
+          if (res.status == 200) {
+            const { data } = res.data;
+            // this.$store.commit("banners/setBanners", data);
+            this.banners = data;
+          } else {
+            this.$message.error("获取图片失败");
+          }
+        });
+      // }
+    // }, 20);
   },
   methods: {
     // 切换tab栏时候触发

@@ -48,8 +48,8 @@
             </el-col>
             <el-col :span="5" class="price">￥{{seat.org_settle_price}}</el-col>
             <el-col :span="3" class="choose-button">
-              <el-button type="warning" size="mini">选定</el-button>
-              <p>剩余：{{seat.discount}}</p>
+              <el-button type="warning" size="mini" @click="$router.push(`/air/order?id=${item.id}&seat_xid=${seat.seat_xid}`)">选定</el-button>
+              <p>剩余：{{seat.discount}}</p>  
             </el-col>
           </el-row>
         </el-col>
@@ -96,6 +96,9 @@ export default {
       const min = dis % 60;
       return `${hours}小时${min}分钟`;
     }
+  },
+  methods:{
+
   }
 };
 </script>
